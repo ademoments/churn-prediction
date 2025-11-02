@@ -37,45 +37,46 @@ Les données utilisées proviennent du dataset public **Telco Customer Churn** d
 ---
 
 ## **Structure du projet**
-
+```plaintext
 .
-├── README.md                     # Documentation du projet  
-├── requirements.txt              # Dépendances Python  
-├── Dockerfile                    # Image Docker principale (pipeline complet)  
-├── docker-compose.yml            # Orchestration multi-services  
-├── .dockerignore                 # Exclusions pour le build Docker  
+├── README.md                     # Documentation du projet
+├── requirements.txt              # Dépendances Python
+├── Dockerfile                    # Image Docker principale (pipeline complet)
+├── docker-compose.yml            # Orchestration multi-services
+├── .dockerignore                 # Exclusions pour le build Docker
 │
-├── data/  
-│   ├── WA_Fn-UseC_-Telco-Customer-Churn.csv        # Jeu de données brut  
-│   ├── WA_Fn-UseC_-Telco-Customer-Churn.pred.csv   # Fichier prédit  
-│   └── telco-customer-churn.zip  
+├── data/
+│   ├── WA_Fn-UseC_-Telco-Customer-Churn.csv        # Jeu de données brut
+│   ├── WA_Fn-UseC_-Telco-Customer-Churn.pred.csv   # Fichier prédit
+│   └── telco-customer-churn.zip
 │
-├── models/                       # Modèles entraînés (.joblib)  
-│   ├── logreg.joblib  
-│   ├── rf.joblib  
-│   ├── xgb.joblib  
-│   ├── lgbm.joblib  
-│   └── threshold.txt  
+├── models/                       # Modèles entraînés (.joblib)
+│   ├── logreg.joblib
+│   ├── rf.joblib
+│   ├── xgb.joblib
+│   ├── lgbm.joblib
+│   └── threshold.txt
 │
-├── notebooks/  
-│   └── eda_churn.ipynb           # Analyse exploratoire (EDA)  
+├── notebooks/
+│   └── eda_churn.ipynb           # Analyse exploratoire (EDA)
 │
-├── reports/                      # Résultats et visualisations  
-│   ├── metrics.md  
-│   ├── confusion_logreg.csv  
-│   ├── confusion_rf.csv  
-│   ├── confusion_xgb.csv  
-│   ├── confusion_lgbm.csv  
-│   ├── logreg_top_positive_features.csv  
-│   └── logreg_top_negative_features.csv  
+├── reports/                      # Résultats et visualisations
+│   ├── metrics.md
+│   ├── confusion_logreg.csv
+│   ├── confusion_rf.csv
+│   ├── confusion_xgb.csv
+│   ├── confusion_lgbm.csv
+│   ├── logreg_top_positive_features.csv
+│   └── logreg_top_negative_features.csv
 │
-└── src/                          # Code source principal  
-    ├── train_models.py           # Entraînement des modèles  
-    ├── evaluate_models.py        # Évaluation et génération de rapports  
-    ├── threshold_tuning.py       # Optimisation du seuil de churn  
-    ├── explain_logreg.py         # Analyse des coefficients du modèle logistique  
-    └── predict_csv.py            # Prédiction sur de nouveaux fichiers CSV  
+└── src/                          # Code source principal
+    ├── train_models.py           # Entraînement des modèles
+    ├── evaluate_models.py        # Évaluation et génération de rapports
+    ├── threshold_tuning.py       # Optimisation du seuil de churn
+    ├── explain_logreg.py         # Analyse des coefficients du modèle logistique
+    └── predict_csv.py            # Prédiction sur de nouveaux fichiers CSV
 
+```
 ---
 
 ## **Prérequis**
