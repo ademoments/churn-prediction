@@ -86,20 +86,20 @@ Les données utilisées proviennent du dataset public **Telco Customer Churn** d
 - Environnement Linux ou WSL2 (Windows Subsystem for Linux)
 
 ### Installation des dépendances
-
+```bash
 python3 -m venv env  
 source env/bin/activate  
 python -m pip install --upgrade pip  
 python -m pip install -r requirements.txt  
-
+```
 ---
 
 ## **Étapes du projet**
 
 ### 1. **Entraînement des modèles**
-
+```bash
 python src/train_models.py  
-
+```
 Les modèles suivants sont entraînés :
 - Logistic Regression  
 - Random Forest  
@@ -111,9 +111,9 @@ Les résultats (Accuracy, AUC) sont affichés dans la console et sauvegardés da
 ---
 
 ### 2. **Évaluation et rapports**
-
+```bash
 python src/evaluate_models.py  
-
+```
 Cette étape génère automatiquement :
 - `reports/metrics.md` : tableau comparatif des performances  
 - `reports/confusion_*.csv` : matrices de confusion par modèle  
@@ -121,33 +121,35 @@ Cette étape génère automatiquement :
 ---
 
 ### 3. **Optimisation du seuil de décision**
-
+```bash
 python src/threshold_tuning.py  
-
+```
 Le seuil optimal maximisant le F1-score est calculé et enregistré dans :
-
+```bash
 models/threshold.txt  
-
+```
 ---
 
 ### 4. **Interprétation du modèle logistique**
-
+```bash
 python src/explain_logreg.py  
-
+```
 Les coefficients du modèle sont analysés pour comprendre les facteurs du churn.  
 Résultats exportés dans :
+```bash
 - reports/logreg_top_positive_features.csv  
 - reports/logreg_top_negative_features.csv  
-
+```
 ---
 
 ### 5. **Prédiction sur de nouvelles données**
-
+```bash
 python src/predict_csv.py data/WA_Fn-UseC_-Telco-Customer-Churn.csv  
-
+```
 Sortie :
+```bash
 data/WA_Fn-UseC_-Telco-Customer-Churn.pred.csv  
-
+```
 Contient :
 - churn_proba → probabilité de churn  
 - churn_pred → prédiction binaire (0 = reste, 1 = quitte)  
@@ -157,25 +159,25 @@ Contient :
 ## **Exécution complète via Docker**
 
 ### 1. Construire l’image
-
+```bash
 docker build -t churn-prediction:latest .  
-
+```
 ### 2. Lancer un entraînement simple
-
+```bash
 docker run --rm \
   -v $(pwd)/data:/app/data \
   -v $(pwd)/models:/app/models \
   -v $(pwd)/reports:/app/reports \
   churn-prediction:latest  
-
+```
 ### 3. Orchestration complète (multi-services)
-
+```bash
 docker compose build  
 docker compose run --rm train  
 docker compose run --rm eval  
 docker compose run --rm threshold  
 docker compose run --rm predict  
-
+```
 Les sorties générées sont automatiquement montées dans :
 - data/  
 - models/  
@@ -211,7 +213,7 @@ Les sorties générées sont automatiquement montées dans :
 
 ## **Auteur**
 
-**Adem Bounaïdja-Rachedi**  
+**Adem Bounaidja-Rachedi**  
 _Master 1 – Machine Learning for Data Science_  
 _Université Paris Descartes, France_  
 [GitHub – ademoments](https://github.com/ademoments)
