@@ -1,0 +1,32 @@
+x-app-common: &app-common
+  build:
+    context: .
+    dockerfile: Dockerfile
+  working_dir: /app
+  volumes:
+    - ./data:/app/data
+    - ./models:/app/models
+    - ./reports:/app/reports
+
+services:
+  train:
+    <<: *app-common
+    command: python src/train_models.py
+
+  eval:
+    <<: *app-common
+    command: python src/evaluate_models.py
+
+  threshold:
+    <<: *app-common
+    command: python src/threshold_tuning.py
+
+  predict:
+    <<: *app-common
+    command: python src/predict_csv.py data/WA_Fn-UseC_-Telco-Customer-Churn.csv
+
+  api:
+    <<: *app-common
+    command: uvicorn src.api:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"

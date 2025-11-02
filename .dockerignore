@@ -1,0 +1,14 @@
+env/
+.git/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.ipynb_checkpoints
+.DS_Store
+
+
+data/*.zip
+data/*.pred.csv
+models/
+reports/
